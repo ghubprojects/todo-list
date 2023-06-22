@@ -1,0 +1,65 @@
+.button {
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(var(--white));
+    background: rgb(var(--grayscale-800));
+    cursor: pointer;
+
+    // size
+    &--large {
+        padding: 12px 28px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    &--medium {
+        padding: 8px 24px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    &--small {
+        padding: 6px 20px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    // color
+    &--indigo {
+        color: rgb(var(--white));
+        background: rgb(var(--indigo-500));
+
+        &:hover {
+            background: rgb(var(--indigo-600));
+        }
+    }
+
+    &--green {
+        color: rgb(var(--white));
+        background: rgb(var(--green-500));
+
+        &:hover {
+            background: rgb(var(--green-600));
+        }
+    }
+
+    &--red {
+        color: rgb(var(--white));
+        background: rgb(var(--red-500));
+
+        &:hover {
+            background: rgb(var(--red-600));
+        }
+    }
+
+    &--cyan {
+        color: rgb(var(--white));
+        background: rgb(var(--cyan-600));
+
+        &:hover {
+            background: rgb(var(--cyan-700));
+        }
+    }
+}

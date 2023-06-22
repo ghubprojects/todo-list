@@ -1,0 +1,28 @@
+@import './fonts.scss';
+@import './variables.scss';
+
+::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font-family: var(--font-family-system) !important;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

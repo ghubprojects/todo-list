@@ -1,0 +1,54 @@
+@mixin font($size: 14, $weight: 'regular', $important: 'primary-text') {
+    @if $size == 10 {
+        font-size: var(--system-10-font-size);
+        line-height: var(--system-10-line-height);
+    } @else if $size == 11 {
+        font-size: var(--system-11-font-size);
+        line-height: var(--system-11-line-height);
+    } @else if $size == 12 {
+        font-size: var(--system-12-font-size);
+        line-height: var(--system-12-line-height);
+    } @else if $size == 14 {
+        font-size: var(--system-14-font-size);
+        line-height: var(--system-14-line-height);
+    } @else if $size == 16 {
+        font-size: var(--system-16-font-size);
+        line-height: var(--system-16-line-height);
+    } @else if $size == 18 {
+        font-size: var(--system-18-font-size);
+        line-height: var(--system-18-line-height);
+    } @else if $size == 22 {
+        font-size: var(--system-22-font-size);
+        line-height: var(--system-22-line-height);
+    } @else if $size == 24 {
+        font-size: var(--system-24-font-size);
+        line-height: var(--system-24-line-height);
+    } @else if $size == 26 {
+        font-size: var(--system-26-font-size);
+        line-height: var(--system-26-line-height);
+    } @else if $size == 28 {
+        font-size: var(--system-28-font-size);
+        line-height: var(--system-28-line-height);
+    } @else if $size == 32 {
+        font-size: var(--system-32-font-size);
+        line-height: var(--system-32-line-height);
+    }
+
+    @if $weight == 'regular' {
+        font-weight: var(--font-weight-system-regular);
+    } @else if $weight == 'semibold' {
+        font-weight: var(--font-weight-system-semibold);
+    } @else if $weight == 'bold' {
+        font-weight: var(--font-weight-system-bold);
+    }
+
+    @if $important == 'primary-text' {
+        color: rgb(var(--ig-primary-text));
+    } @else if $important == 'secondary-text' {
+        color: rgb(var(--ig-secondary-text));
+    } @else if $important == 'tertiary-text' {
+        color: rgb(var(--ig-tertiary-text));
+    } @else if $important == 'primary-button' {
+        color: rgb(var(--ig-primary-button));
+    }
+}
