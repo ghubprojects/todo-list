@@ -11,9 +11,11 @@
     padding: 6px 12px;
     border: 1px solid rgba(var(--grayscale-900), 0.12);
     border-radius: 6px;
+    resize: none;
+
+    font-family: var(--font-family-system), sans-serif;
     font-size: 14px;
     line-height: 1.8;
-    font-family: var(--font-family-system), sans-serif;
 
     &:hover {
         border-color: rgba(var(--grayscale-900), 0.56);

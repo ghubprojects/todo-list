@@ -13,13 +13,7 @@
     border-radius: 6px;
     padding: 12px;
 
-    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
-        /* Styles */
-    }
-
-    /* Smartphones (max-width : 739px) ----------- */
-    @media only screen and (max-width: 46.1875em) {
+    @include sm {
         padding: 16px;
         flex-direction: column;
         gap: 12px;
@@ -44,14 +38,8 @@
         display: flex;
         gap: 12px;
 
-        /* Smartphones (max-width : 739px) ----------- */
-        @media only screen and (max-width: 46.1875em) {
+        @include sm {
             justify-content: space-between;
-        }
-
-        /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-        @media only screen and (min-width: 46.25em) and (max-width: 64em) {
-            /* Styles */
         }
 
         .detail-btn,
@@ -67,13 +55,11 @@
         font-weight: 700;
         font-size: 20px;
 
-        /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-        @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        @include md {
             font-size: 18px;
         }
 
-        /* Smartphones (max-width : 739px) ----------- */
-        @media only screen and (max-width: 46.1875em) {
+        @include sm {
             font-size: 18px;
         }
     }
@@ -82,8 +68,8 @@
         display: flex;
         gap: 12px;
         margin-bottom: 12px;
-        /* Smartphones (max-width : 739px) ----------- */
-        @media only screen and (max-width: 46.1875em) {
+
+        @include sm {
             flex-direction: column;
         }
 
@@ -101,17 +87,15 @@
     width: calc(var(--task-list-width) - var(--task-list-padding) * 2);
     height: 200px;
 
-    /* Smartphones (max-width : 739px) ----------- */
-    @media only screen and (max-width: 46.1875em) {
+    @include md {
+        width: calc(var(--task-list-medium-width) - var(--task-creation-form-medium-padding) * 2);
+        height: 120px;
+    }
+
+    @include sm {
         height: 120px;
         width: 100%;
         max-width: calc(var(--task-list-narrow-max-width) - var(--task-list-narrow-padding) * 2);
-    }
-
-    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
-        width: calc(var(--task-list-medium-width) - var(--task-creation-form-medium-padding) * 2);
-        height: 120px;
     }
 }
 

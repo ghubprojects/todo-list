@@ -4,12 +4,7 @@
     margin: 40px auto;
     width: 100%;
 
-    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
-    }
-
-    /* Smartphones (max-width : 739px) ----------- */
-    @media only screen and (max-width: 46.1875em) {
+    @include sm {
         flex-direction: column;
         margin: 0;
     }

@@ -1,11 +1,13 @@
 .button {
     border: none;
     border-radius: 4px;
-    font-size: 14px;
-    font-weight: 400;
+    cursor: pointer;
+
     color: rgb(var(--white));
     background: rgb(var(--grayscale-800));
-    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 400;
 
     // size
     &--large {

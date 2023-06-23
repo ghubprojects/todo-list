@@ -8,14 +8,12 @@
     border-left: 1px solid rgb(var(--separator));
     border-radius: 0 12px 12px 0;
 
-    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+    @include md {
         max-width: var(--task-list-medium-width);
         padding: var(--task-list-medium-padding);
     }
 
-    /* Smartphones (max-width : 739px) ----------- */
-    @media only screen and (max-width: 46.1875em) {
+    @include sm {
         max-width: var(--task-list-narrow-width);
         padding: var(--task-list-narrow-padding);
 
@@ -32,13 +30,11 @@
     font-size: 32px;
     margin-bottom: 20px;
 
-    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
-    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+    @include md {
         font-size: 28px;
     }
 
-    /* Smartphones (max-width : 739px) ----------- */
-    @media only screen and (max-width: 46.1875em) {
+    @include sm {
         font-size: 24px;
     }
 }
@@ -63,6 +59,7 @@
 
     padding: 16px;
     background: rgba(var(--grayscale-900), 0.8);
+
     .title {
         font-weight: 600;
         color: rgb(var(--white));
