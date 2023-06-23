@@ -1,7 +1,8 @@
-import classNames from 'classnames/bind';
 import { FunctionComponent, SelectHTMLAttributes } from 'react';
-import styles from './SelectField.module.scss';
 import SelectOption from './SelectOption';
+
+import classNames from 'classnames/bind';
+import styles from './SelectField.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -25,6 +26,7 @@ const SelectField: FunctionComponent<SelectFieldProps> = ({
         <div className={cx('select-field', className)}>
             {label && <label>{label}</label>}
             <select className={cx('select-input')} {...restProps}>
+                {/* mapping over the options list and rendering SelectOption components  */}
                 {options.map((option) => (
                     <SelectOption key={option.value} value={option.value} label={option.label} />
                 ))}

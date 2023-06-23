@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     size?: 'large' | 'medium' | 'small';
-    color?: 'indigo' | 'green' | 'red' | 'cyan';
+    color?: 'indigo' | 'green' | 'red';
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
     className,
     ...rest
 }) => {
+    // Merging classes with button size and button color
     const buttonClasses = cx(
         'button',
         {

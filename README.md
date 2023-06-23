@@ -124,6 +124,7 @@ instagram
 | ├── styles
 | | ├── fonts
 | | ├── global
+| | ├── mixins
 | | └── variables
 | |
 | ├── types

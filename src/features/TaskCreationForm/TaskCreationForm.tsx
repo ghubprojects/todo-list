@@ -1,24 +1,20 @@
-import classNames from 'classnames/bind';
 import { ChangeEvent, FunctionComponent, useState } from 'react';
-
 import { useAppDispatch } from '~/redux/hooks';
 import { addTask } from '../TaskList/taskListSlice';
 
 import { Button, DateField, SelectField, TextField, Textarea } from '~/components';
 import { getCurrentDate } from '~/utils/dateUtils';
+import { priorityOptions } from '~/utils/selectOptions';
+
+import classNames from 'classnames/bind';
 import styles from './TaskCreationForm.module.scss';
 
 const cx = classNames.bind(styles);
 
-const priorityOptions = [
-    { value: 'low', label: 'Low' },
-    { value: 'normal', label: 'Normal' },
-    { value: 'high', label: 'High' },
-];
-
 const TaskCreationForm: FunctionComponent = () => {
     const dispatch = useAppDispatch();
 
+    // Initializing the task object with default values
     const taskInit = {
         title: '',
         description: '',
@@ -28,8 +24,13 @@ const TaskCreationForm: FunctionComponent = () => {
     };
 
     const [task, setTask] = useState<Task>(taskInit);
+
+    /**
+     * Handling the change event for the input, select, and textarea fields
+     * and updating the task state based on the field being edited
+     */
     const handleChangeField =
-        (field: string) =>
+        (field: keyof Task) =>
         (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
             setTask((prevTask) => ({
                 ...prevTask,
@@ -37,15 +38,16 @@ const TaskCreationForm: FunctionComponent = () => {
             }));
         };
 
+    /**
+     * Handling the add task action:
+     * Checking if the task title is not empty and the due date is valid,
+     * dispatching the addTask action with the new task object
+     * and resetting the task state to its initial values
+     */
     const handleAddTask = () => {
-        if (task.title.trim() && task.dueDate >= getCurrentDate()) {
-            const newTask: Task = {
-                title: task.title,
-                description: task.description,
-                dueDate: task.dueDate,
-                priority: task.priority,
-                checked: false,
-            };
+        const { title, dueDate } = task;
+        if (title.trim() && dueDate >= getCurrentDate()) {
+            const newTask: Task = { ...task };
             dispatch(addTask(newTask));
             setTask(taskInit);
         }
@@ -54,6 +56,7 @@ const TaskCreationForm: FunctionComponent = () => {
     return (
         <div className={cx('task-creation-form')}>
             <header className={cx('title')}>New Task</header>
+
             <div className={cx('task-form')}>
                 <div className={cx('form-row')}>
                     <TextField
