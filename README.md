@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/ghubprojects/todo-list/assets/83504674/ac9438fb-af43-46d0-bd2a-9d2d3c6e05f2" width="140" >
+  <img src="https://github.com/ghubprojects/todo-list/assets/83504674/fcbda2d2-4eed-4391-820a-41807cfea5f9" width="140" >
 </p>
 <h1 align="center">Todo List</h1>
 <div align="center">
@@ -136,6 +136,7 @@ instagram
 │ └── main.tsx
 |
 ├── public
+│ ├── favicon.ico
 │ └── vite.svg
 └── node_modules
 ```
