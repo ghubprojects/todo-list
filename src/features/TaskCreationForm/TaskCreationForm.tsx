@@ -1,52 +1,99 @@
-import { useState } from 'react';
+import classNames from 'classnames/bind';
+import { ChangeEvent, FunctionComponent, useState } from 'react';
 
-interface Task {
-    id: number;
-    title: string;
-    dueDate: string;
-    priority: string;
-}
+import { useAppDispatch } from '~/redux/hooks';
+import { addTask } from '../TaskList/taskListSlice';
 
-interface TaskCreationFormProps {
-    onTaskCreate: (task: Task) => void;
-}
+import { Button, DateField, SelectField, TextField, Textarea } from '~/components';
+import { getCurrentDate } from '~/utils/dateUtils';
+import styles from './TaskCreationForm.module.scss';
 
-const TaskCreationForm: React.FC<TaskCreationFormProps> = ({ onTaskCreate }) => {
-    const [title, setTitle] = useState('');
-    const [dueDate, setDueDate] = useState(new Date().toISOString().slice(0, 10));
-    const [priority, setPriority] = useState('normal');
+const cx = classNames.bind(styles);
 
-    const handleFormSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const newTask: Task = {
-            title,
-            dueDate,
-            priority,
-            id: Date.now(), // Generate a unique ID for the task
+const TaskCreationForm: FunctionComponent = () => {
+    const dispatch = useAppDispatch();
+
+    const priorityOptions = [
+        { value: 'low', label: 'Low' },
+        { value: 'normal', label: 'Normal' },
+        { value: 'high', label: 'High' },
+    ];
+
+    const taskInit = {
+        title: '',
+        description: '',
+        dueDate: getCurrentDate(),
+        priority: 'normal',
+        checked: false,
+    };
+
+    const [task, setTask] = useState<Task>(taskInit);
+    const handleChangeField =
+        (field: string) =>
+        (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+            setTask((prevTask) => ({
+                ...prevTask,
+                [field]: e.target.value,
+            }));
         };
-        onTaskCreate(newTask);
-        setTitle('');
-        setDueDate(new Date().toISOString().slice(0, 10));
-        setPriority('normal');
+
+    const handleAddTask = () => {
+        if (task.title.trim() && task.dueDate >= getCurrentDate()) {
+            const newTask: Task = {
+                title: task.title,
+                description: task.description,
+                dueDate: task.dueDate,
+                priority: task.priority,
+                checked: false,
+            };
+            dispatch(addTask(newTask));
+            setTask(taskInit);
+        }
     };
 
     return (
-        <form className='task-creation-form' onSubmit={handleFormSubmit}>
-            <input
-                type='text'
-                placeholder='Task title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            />
-            <input type='date' value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                <option value='low'>Low</option>
-                <option value='normal'>Normal</option>
-                <option value='high'>High</option>
-            </select>
-            <button type='submit'>Create Task</button>
-        </form>
+        <div className={cx('task-creation-form-container')}>
+            <h1>New Task</h1>
+            <div className={cx('task-form')}>
+                <div className={cx('form-row')}>
+                    <TextField
+                        value={task.title}
+                        placeholder='Add new task ...'
+                        required
+                        onChange={handleChangeField('title')}
+                    />
+                </div>
+
+                <div className={cx('form-row')}>
+                    <Textarea
+                        label='Description'
+                        value={task.description}
+                        onChange={handleChangeField('description')}
+                    />
+                </div>
+
+                <div className={cx('form-row')}>
+                    <DateField
+                        label='Due Date'
+                        value={task.dueDate}
+                        min={getCurrentDate()}
+                        onChange={handleChangeField('dueDate')}
+                        className={cx('due-date-field')}
+                    />
+
+                    <SelectField
+                        label='Priority'
+                        options={priorityOptions}
+                        value={task.priority}
+                        onChange={handleChangeField('priority')}
+                        className={cx('priority-field')}
+                    />
+                </div>
+            </div>
+            <Button onClick={handleAddTask} className={cx('add-task-btn')}>
+                Add
+            </Button>
+        </div>
     );
 };
 

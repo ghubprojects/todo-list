@@ -1,0 +1,23 @@
+.task-creation-form-container {
+    background-color: #eee;
+    min-width: 400px;
+    padding: 40px;
+}
+
+.add-task-btn {
+    width: 100%;
+}
+
+.task-form {
+    margin-top: 20px;
+
+    .form-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+        .due-date-field,
+        .priority-field {
+            flex-grow: 1;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.text-field {
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    border: 1px solid rgba(var(--grayscale-900), 0.12);
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.8;
+
+    &:hover {
+        border-color: rgba(var(--grayscale-900), 0.56);
+    }
+    &:focus {
+        border-width: 2px;
+        border-color: rgb(var(--indigo-500));
+    }
+}

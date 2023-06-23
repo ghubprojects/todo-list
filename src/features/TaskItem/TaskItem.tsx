@@ -1,61 +1,69 @@
 import classNames from 'classnames/bind';
-import React, { useState } from 'react';
+import { ChangeEvent, FunctionComponent, useState } from 'react';
+
+import { Button, DateField, SelectField, TextField, Textarea } from '~/components';
+import { getCurrentDate } from '~/utils/dateUtils';
 import styles from './TaskItem.module.scss';
-import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-type Task = {
-    title: string;
-    dueDate: string;
-    priority: string;
-    checked: boolean;
-};
-
-type TaskItemProps = {
+interface TaskItemProps {
     task: Task;
+    isExpanded: boolean;
     onDelete: () => void;
     onUpdate: (updatedTask: Task) => void;
     onCheck: (isChecked: boolean) => void;
-};
+    onExpand: (isExpanded: boolean) => void;
+}
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate, onCheck }) => {
-    const [showDetails, setShowDetails] = useState(false);
+const TaskItem: FunctionComponent<TaskItemProps> = ({
+    task,
+    isExpanded,
+    onDelete,
+    onUpdate,
+    onCheck,
+    onExpand,
+}) => {
+    const priorityOptions = [
+        { value: 'low', label: 'Low' },
+        { value: 'normal', label: 'Normal' },
+        { value: 'high', label: 'High' },
+    ];
+
     const [editedTask, setEditedTask] = useState<Task>(task);
-
-    const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEditedTask((prevTask) => ({
-            ...prevTask,
-            title: e.target.value,
-        }));
-    };
+    const handleChangeTask =
+        (field: string) =>
+        (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+            setEditedTask((prevTask) => ({
+                ...prevTask,
+                [field]: e.target.value,
+            }));
+        };
 
     const handleSaveTask = () => {
-        setShowDetails(false);
+        onExpand(false);
         onUpdate(editedTask);
     };
 
-    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onCheck(e.target.checked);
-    };
-
-    const handleToggleDetails = () => {
-        setShowDetails(!showDetails);
+    const handleToggleExpand = () => {
+        onExpand(isExpanded);
+        setEditedTask(task);
     };
 
     return (
         <div className={cx('task-wrapper')}>
             <div className={cx('task')}>
-                <input
-                    type='checkbox'
-                    className={cx('task-checkbox')}
-                    checked={task.checked}
-                    onChange={handleCheckboxChange}
-                />
-                <span className={cx('task-title')}>{task.title}</span>
-
+                <div className={cx('task-info')}>
+                    <input
+                        type='checkbox'
+                        className={cx('task-checkbox')}
+                        checked={task.checked}
+                        onChange={(e) => onCheck(e.target.checked)}
+                    />
+                    <span className={cx('task-title')}>{task.title}</span>
+                </div>
                 <div className={cx('task-actions')}>
-                    <Button size='small' color='green' onClick={handleToggleDetails}>
+                    <Button size='small' color='green' onClick={handleToggleExpand}>
                         Detail
                     </Button>
                     <Button size='small' color='red' onClick={onDelete}>
@@ -63,19 +71,57 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate, onCheck }
                     </Button>
                 </div>
             </div>
-            {showDetails && (
+            {isExpanded && (
                 <div className={cx('task-details')}>
-                    <input
-                        type='text'
-                        value={editedTask.title}
-                        onChange={handleTaskChange}
-                        className={cx('task-edit-input')}
-                    />
-                    <span className={cx('task-due-date')}>Due Date: {task.dueDate}</span>
-                    <span className={cx('task-priority')}>Priority: {task.priority}</span>
-                    <Button size='small' color='indigo' onClick={handleSaveTask}>
-                        Update
-                    </Button>
+                    <header>
+                        <h3>Details</h3>
+                    </header>
+
+                    <div className={cx('form-row')}>
+                        <TextField
+                            value={editedTask.title}
+                            onChange={handleChangeTask('title')}
+                            required
+                        />
+                    </div>
+
+                    <div className={cx('form-row')}>
+                        <Textarea
+                            label='Description'
+                            value={editedTask.description}
+                            className={cx('description-textarea')}
+                            onChange={handleChangeTask('description')}
+                        />
+                    </div>
+
+                    <div className={cx('form-row')}>
+                        <DateField
+                            label='Due Date'
+                            value={editedTask.dueDate}
+                            min={getCurrentDate()}
+                            className={cx('due-date-field')}
+                            onChange={handleChangeTask('dueDate')}
+                        />
+
+                        <SelectField
+                            label='Priority'
+                            options={priorityOptions}
+                            value={editedTask.dueDate}
+                            className={cx('priority-field')}
+                            onChange={handleChangeTask('priority')}
+                        />
+                    </div>
+
+                    <div className={cx('update-task-action')}>
+                        <Button
+                            size='medium'
+                            color='indigo'
+                            className={cx('update-task-btn')}
+                            onClick={handleSaveTask}
+                        >
+                            Update
+                        </Button>
+                    </div>
                 </div>
             )}
         </div>

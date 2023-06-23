@@ -1,0 +1,27 @@
+.textarea {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+}
+
+.textarea-input {
+    min-width: 400px;
+    height: 200px;
+    padding: 6px 12px;
+    border: 1px solid rgba(var(--grayscale-900), 0.12);
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.8;
+    font-family: var(--font-family-system), sans-serif;
+
+    &:hover {
+        border-color: rgba(var(--grayscale-900), 0.56);
+    }
+    &:focus {
+        border-width: 2px;
+        border-color: rgb(var(--indigo-500));
+    }
+}
