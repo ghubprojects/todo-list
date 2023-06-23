@@ -72,16 +72,19 @@ const TaskList: React.FunctionComponent = () => {
             {/* Bulk Action */}
             {taskList.some((task) => task.checked) && (
                 <div className={cx('bulk-action')}>
-                    <Button color='green'>Done</Button>
-                    <Button
-                        color='red'
-                        onClick={() => {
-                            setExpandIndex(null);
-                            dispatch(removeMultipleTasks());
-                        }}
-                    >
-                        Remove All
-                    </Button>
+                    <p className={cx('title')}>Bulk Action:</p>
+                    <div className={cx('actions')}>
+                        <Button color='green'>Done</Button>
+                        <Button
+                            color='red'
+                            onClick={() => {
+                                setExpandIndex(null);
+                                dispatch(removeMultipleTasks());
+                            }}
+                        >
+                            Remove All
+                        </Button>
+                    </div>
                 </div>
             )}
         </div>
