@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { ChangeEvent, FunctionComponent, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { Button, DateField, SelectField, TextField, Textarea } from '~/components';
 import { getCurrentDate } from '~/utils/dateUtils';
@@ -24,6 +25,13 @@ const TaskItem: FunctionComponent<TaskItemProps> = ({
     onCheck,
     onExpand,
 }) => {
+    // Desktops (min-width : 1024px)
+    const isDesktop = useMediaQuery({ minWidth: '64em' });
+    // Tablets (min-width : 740px and max-width : 1023px)
+    const isTablet = useMediaQuery({ minWidth: '46.25em', maxWidth: '63.9375em' });
+    // Mobiles (max-width : 739px)
+    const isMobile = useMediaQuery({ maxWidth: '46.1875em' });
+
     const priorityOptions = [
         { value: 'low', label: 'Low' },
         { value: 'normal', label: 'Normal' },
@@ -63,11 +71,16 @@ const TaskItem: FunctionComponent<TaskItemProps> = ({
                     <span className={cx('task-title')}>{task.title}</span>
                 </div>
                 <div className={cx('task-actions')}>
-                    <Button size='small' color='green' onClick={handleToggleExpand}>
+                    <Button
+                        size='small'
+                        color='green'
+                        className={cx('detail-btn')}
+                        onClick={handleToggleExpand}
+                    >
                         Detail
                     </Button>
-                    <Button size='small' color='red' onClick={onDelete}>
-                        Delete
+                    <Button size='small' color='red' className={cx('remove-btn')} onClick={onDelete}>
+                        Remove
                     </Button>
                 </div>
             </div>
