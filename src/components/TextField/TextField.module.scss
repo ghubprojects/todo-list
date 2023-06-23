@@ -1,4 +1,14 @@
 .text-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    label {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+}
+
+.text-field-input {
     width: 100%;
     height: 40px;
     padding: 6px 12px;

@@ -36,13 +36,12 @@ const TaskList: React.FunctionComponent = () => {
 
     return (
         <div className={cx('task-list-container')}>
-            <header>
-                <h1>Todo List</h1>
-            </header>
+            <header className={cx('task-list-title')}>Todo List</header>
             {/* Search Input */}
             <TextField
+                label='Search Title'
                 value={searchText}
-                placeholder='Search ...'
+                placeholder='Enter title ...'
                 className={cx('search-text')}
                 onChange={(e) => setSearchText(e.target.value)}
             />

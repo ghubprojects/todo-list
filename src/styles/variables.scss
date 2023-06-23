@@ -1,4 +1,22 @@
 :root {
+    --task-creation-form-width: 360px;
+    --task-creation-form-padding: 32px;
+
+    --task-creation-form-medium-width: 280px;
+    --task-creation-form-medium-padding: 24px;
+
+    --task-creation-form-narrow-max-width: 740px;
+    --task-creation-form-narrow-padding: 24px;
+
+    --task-list-width: 520px;
+    --task-list-padding: 32px;
+
+    --task-list-medium-width: 400px;
+    --task-list-medium-padding: 24px;
+
+    --task-list-narrow-max-width: 740px;
+    --task-list-narrow-padding: 24px;
+
     // Font
     --font-family-system: Segoe UI, sans-serif;
     --separator: 200, 200, 200;

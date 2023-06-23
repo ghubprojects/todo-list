@@ -24,6 +24,7 @@
 -   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" width="14"/>&nbsp;[Typescript](https://www.typescriptlang.org/)
 -   <img src="https://github.com/ghubprojects/instagram/assets/83504674/0565b27a-02ae-467e-99cf-093ee913a185" width="14"/>&nbsp;[ReactJS](https://react.dev/)
 -   <img src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" width="14"/>&nbsp;[Sass](https://sass-lang.com/)
+-   <img src="https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg" width="14"/>&nbsp;[Redux Toolkit](https://redux-toolkit.js.org/)
 
 ## Features
 
@@ -94,26 +95,42 @@ instagram
 ├── src
 │ ├── assets
 | | ├── fonts
-| | ├── icons
 | | └── images
 | |
 │ ├── components
 | | ├── Button
+| | ├── DateField
+| | ├── SelectField
+| | ├── Textarea
+| | ├── TextField
 | | └── index.ts
 | |
 | ├── features
+| | ├── TaskCreationForm
 | | ├── TaskItem
 | | ├── TaskList
+| | | ├── TaskList
+| | | └── taskListSlice
 | | └── index.ts
+| |
+| ├── pages
+| | ├── Home
+| | └── index.ts
+| |
+| ├── redux
+| | ├── hooks.ts
+| | └── store.ts
 | |
 | ├── styles
 | | ├── fonts
 | | ├── global
-| | ├── mixins
 | | └── variables
 | |
+| ├── types
+| | └── Task.d.ts
+| |
 | ├── utils
-| | └── index
+| | └── dateUtils.ts
 | |
 │ ├── App.tsx
 │ └── main.tsx

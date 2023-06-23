@@ -1,11 +1,40 @@
-.task-creation-form-container {
-    background-color: #eee;
-    min-width: 400px;
-    padding: 40px;
+.task-creation-form {
+    max-width: var(--task-creation-form-width);
+    padding: var(--task-creation-form-padding);
+    width: 100%;
+
+    background-color: rgba(var(--grayscale-300), 0.5);
+    border-radius: 12px 0 0 12px;
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        max-width: var(--task-creation-form-narrow-width);
+        padding: var(--task-creation-form-narrow-padding);
+
+        min-width: 100%;
+        border-radius: 0;
+    }
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        max-width: var(--task-creation-form-medium-width);
+        padding: var(--task-creation-form-medium-padding);
+    }
 }
 
-.add-task-btn {
-    width: 100%;
+.task-creation-form > .title {
+    font-weight: 700;
+    font-size: 32px;
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        font-size: 28px;
+    }
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        font-size: 24px;
+    }
 }
 
 .task-form {
@@ -15,9 +44,46 @@
         display: flex;
         gap: 12px;
         margin-bottom: 12px;
+        /* Smartphones (max-width : 739px) ----------- */
+        @media only screen and (max-width: 46.1875em) {
+            flex-direction: column;
+        }
+
+        /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+        @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+            flex-direction: column;
+        }
+
         .due-date-field,
         .priority-field {
             flex-grow: 1;
         }
     }
+}
+
+.description-textarea {
+    width: calc(var(--task-creation-form-width) - var(--task-creation-form-padding) * 2);
+    height: 200px;
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        height: 120px;
+        width: 100%;
+        max-width: calc(
+            var(--task-creation-form-narrow-max-width) - var(--task-creation-form-narrow-padding) * 2
+        );
+    }
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        height: 120px;
+        width: calc(
+            var(--task-creation-form-medium-width) - var(--task-creation-form-medium-padding) * 2
+        );
+    }
+}
+
+.add-task-btn {
+    width: 100%;
+    margin-top: 12px;
 }

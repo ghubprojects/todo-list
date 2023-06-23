@@ -12,6 +12,18 @@
     align-items: center;
     border-radius: 6px;
     padding: 12px;
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        /* Styles */
+    }
+
     .task-info {
         display: flex;
         gap: 12px;
@@ -29,13 +41,31 @@
 }
 
 .task-details {
-    header {
+    header.task-details-title {
         padding: 12px 0;
+        font-weight: 700;
+        font-size: 20px;
+
+        /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+        @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+            font-size: 18px;
+        }
+
+        /* Smartphones (max-width : 739px) ----------- */
+        @media only screen and (max-width: 46.1875em) {
+            font-size: 18px;
+        }
     }
+
     .form-row {
         display: flex;
         gap: 12px;
         margin-bottom: 12px;
+        /* Smartphones (max-width : 739px) ----------- */
+        @media only screen and (max-width: 46.1875em) {
+            flex-direction: column;
+        }
+
         .due-date-field,
         .priority-field {
             flex-grow: 1;
@@ -47,7 +77,21 @@
 }
 
 .description-textarea {
-    width: 500px;
+    width: calc(var(--task-list-width) - var(--task-list-padding) * 2);
+    height: 200px;
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        height: 120px;
+        width: 100%;
+        max-width: calc(var(--task-list-narrow-max-width) - var(--task-list-narrow-padding) * 2);
+    }
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        width: calc(var(--task-list-medium-width) - var(--task-creation-form-medium-padding) * 2);
+        height: 120px;
+    }
 }
 
 .update-task-btn {

@@ -73,12 +73,11 @@ const TaskItem: FunctionComponent<TaskItemProps> = ({
             </div>
             {isExpanded && (
                 <div className={cx('task-details')}>
-                    <header>
-                        <h3>Details</h3>
-                    </header>
+                    <header className={cx('task-details-title')}>Details</header>
 
                     <div className={cx('form-row')}>
                         <TextField
+                            label='Title'
                             value={editedTask.title}
                             onChange={handleChangeTask('title')}
                             required

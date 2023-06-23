@@ -1,16 +1,45 @@
 .task-list-container {
     position: relative;
-    border-left: 1px solid rgb(var(--separator));
-    background-color: #eee;
-    min-width: 600px;
-    padding: 40px;
+    max-width: var(--task-list-width);
+    padding: var(--task-list-padding);
+    width: 100%;
 
-    header {
-        display: flex;
-        align-items: center;
+    background-color: rgba(var(--grayscale-300), 0.5);
+    border-left: 1px solid rgb(var(--separator));
+    border-radius: 0 12px 12px 0;
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        max-width: var(--task-list-medium-width);
+        padding: var(--task-list-medium-padding);
     }
-    .search-text {
-        margin: 20px 0;
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        max-width: var(--task-list-narrow-width);
+        padding: var(--task-list-narrow-padding);
+
+        min-width: 100%;
+        border-radius: 0;
+
+        border-left: none;
+        border-top: 1px solid rgb(var(--separator));
+    }
+}
+
+.task-list-title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 20px;
+
+    /* Tablets (min-width : 740px and max-width : 1023px) ----------- */
+    @media only screen and (min-width: 46.25em) and (max-width: 64em) {
+        font-size: 28px;
+    }
+
+    /* Smartphones (max-width : 739px) ----------- */
+    @media only screen and (max-width: 46.1875em) {
+        font-size: 24px;
     }
 }
 
@@ -19,7 +48,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-bottom: 80px;
+    margin: 20px 0 80px;
 }
 
 .bulk-action {
