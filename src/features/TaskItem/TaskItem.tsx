@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import { ChangeEvent, FunctionComponent, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import { Button, DateField, SelectField, TextField, Textarea } from '~/components';
 import { getCurrentDate } from '~/utils/dateUtils';
@@ -25,13 +24,6 @@ const TaskItem: FunctionComponent<TaskItemProps> = ({
     onCheck,
     onExpand,
 }) => {
-    // Desktops (min-width : 1024px)
-    const isDesktop = useMediaQuery({ minWidth: '64em' });
-    // Tablets (min-width : 740px and max-width : 1023px)
-    const isTablet = useMediaQuery({ minWidth: '46.25em', maxWidth: '63.9375em' });
-    // Mobiles (max-width : 739px)
-    const isMobile = useMediaQuery({ maxWidth: '46.1875em' });
-
     const priorityOptions = [
         { value: 'low', label: 'Low' },
         { value: 'normal', label: 'Normal' },
