@@ -1,3 +1,5 @@
+@import '~/styles/mixins.scss';
+
 .task-list-container {
     position: relative;
     max-width: var(--task-list-width);

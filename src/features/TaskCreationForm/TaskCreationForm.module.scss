@@ -1,3 +1,5 @@
+@import '~/styles/mixins.scss';
+
 .task-creation-form {
     max-width: var(--task-creation-form-width);
     padding: var(--task-creation-form-padding);
