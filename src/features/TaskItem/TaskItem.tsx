@@ -106,7 +106,7 @@ const TaskItem: FunctionComponent<TaskItemProps> = ({
                         <SelectField
                             label='Priority'
                             options={priorityOptions}
-                            value={editedTask.dueDate}
+                            value={editedTask.priority}
                             className={cx('priority-field')}
                             onChange={handleChangeTask('priority')}
                         />
